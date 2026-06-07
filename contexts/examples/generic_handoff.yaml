@@ -1,0 +1,42 @@
+handoff_id: handoff-example-001
+from_stage: discovery
+to_stage: collection
+domain_id: example-water-quality
+targets:
+  - target_id: official-monitoring-001
+    rank: 1
+    source_name: Example Official Monitoring Portal
+    initial_url: https://example.org/water-data
+    domain_layer: river_core
+    priority: high
+    access_type: api_access
+    expected_format: json
+    expected_period:
+      target_years: 20
+      actual_start: null
+      actual_end: null
+    parameters:
+      - discharge
+      - dissolved oxygen
+      - turbidity
+    suggested_collection_method: http_api
+    review_status: needs_review
+    known_gaps:
+      - Actual temporal coverage must be confirmed during collection.
+    notes:
+      - Placeholder handoff target for contract validation.
+required_fields:
+  - target_id
+  - source_name
+  - initial_url
+  - access_type
+  - expected_format
+  - review_status
+coverage_contract:
+  target_years: 20
+  preserve_shortfall: true
+known_gaps:
+  - No source has been collected yet; this is an example handoff.
+ready_count: 0
+needs_review_count: 1
+

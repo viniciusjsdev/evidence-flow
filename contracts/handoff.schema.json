@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/evidence-flow/handoff.schema.json",
+  "title": "Handoff",
+  "type": "object",
+  "required": [
+    "handoff_id",
+    "from_stage",
+    "to_stage",
+    "domain_id",
+    "targets",
+    "required_fields",
+    "coverage_contract",
+    "known_gaps",
+    "ready_count",
+    "needs_review_count"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "handoff_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "from_stage": {
+      "type": "string",
+      "minLength": 1
+    },
+    "to_stage": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "target_id",
+          "rank",
+          "source_name",
+          "initial_url",
+          "domain_layer",
+          "priority",
+          "access_type",
+          "expected_format",
+          "expected_period",
+          "parameters",
+          "suggested_collection_method",
+          "review_status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "target_id": { "type": "string", "minLength": 1 },
+          "rank": { "type": "integer", "minimum": 1 },
+          "source_name": { "type": "string", "minLength": 1 },
+          "initial_url": { "type": "string", "minLength": 1 },
+          "domain_layer": { "type": "string", "minLength": 1 },
+          "priority": { "type": "string", "enum": ["high", "medium", "low"] },
+          "access_type": {
+            "type": "string",
+            "enum": [
+              "direct_download",
+              "api_access",
+              "web_portal",
+              "geospatial_platform",
+              "pdf_extraction",
+              "restricted",
+              "manual",
+              "unknown"
+            ]
+          },
+          "expected_format": { "type": "string", "minLength": 1 },
+          "expected_period": {
+            "type": "object",
+            "required": ["target_years", "actual_start", "actual_end"],
+            "additionalProperties": false,
+            "properties": {
+              "target_years": { "type": "integer", "minimum": 0 },
+              "actual_start": { "type": ["string", "null"] },
+              "actual_end": { "type": ["string", "null"] }
+            }
+          },
+          "parameters": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "suggested_collection_method": { "type": "string", "minLength": 1 },
+          "review_status": {
+            "type": "string",
+            "enum": ["ready", "needs_review", "blocked"]
+          },
+          "known_gaps": {
+            "type": "array",
+            "items": { "type": "string" },
+            "default": []
+          },
+          "notes": {
+            "type": "array",
+            "items": { "type": "string" },
+            "default": []
+          }
+        }
+      }
+    },
+    "required_fields": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "coverage_contract": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "known_gaps": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "ready_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "needs_review_count": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}
+

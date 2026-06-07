@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/evidence-flow/manifest.schema.json",
+  "title": "RunManifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_id",
+    "pipeline_name",
+    "domain_id",
+    "stage",
+    "status",
+    "generated_at",
+    "updated_at",
+    "inputs",
+    "outputs",
+    "artifacts",
+    "counts",
+    "coverage",
+    "blockers",
+    "warnings",
+    "parent_run_id"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pipeline_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stage": {
+      "type": "string",
+      "enum": [
+        "initialized",
+        "discovery",
+        "validation",
+        "enrichment",
+        "handoff",
+        "collection",
+        "staging",
+        "analytic",
+        "eda",
+        "report",
+        "learning",
+        "complete"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "running", "complete", "partial", "blocked", "error"]
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "outputs": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "stage", "artifact_type"],
+        "additionalProperties": false,
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "stage": { "type": "string", "minLength": 1 },
+          "artifact_type": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "default": "" },
+          "generated_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "blockers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "parent_run_id": {
+      "type": ["string", "null"]
+    }
+  }
+}
+

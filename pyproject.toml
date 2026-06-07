@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evidence-flow"
+version = "0.1.0"
+description = "Generic evidence harness for auditable research workflows."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "jsonschema>=4.0",
+  "PyYAML>=6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0"
+]
+
+[project.scripts]
+evidence-flow = "evidence_flow.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

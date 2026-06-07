@@ -1,0 +1,69 @@
+- query_id: q-001
+  query_text: Example official monitoring query.
+  target_intent: dataset_discovery
+  research_track: official_monitoring_sources
+  chat_label: chat-official-monitoring
+  collection_status: ok
+  collection_method: fixture
+  request_endpoint: fixture://generic_discovery_sessions
+  answer_text: Fixture session for official monitoring sources.
+  visible_source_count: 3
+  links:
+    - title: Example River Monitoring API
+      url: https://data.example.org/water/monitoring/api
+      domain: data.example.org
+      snippet: Official API exposing discharge, stage, dissolved oxygen, pH, and turbidity observations as JSON.
+    - title: Example Water Quality CSV Download
+      url: https://data.example.org/water/quality.csv
+      domain: data.example.org
+      snippet: Downloadable CSV with dissolved oxygen, nutrients, pH, and turbidity monitoring records.
+    - title: Duplicate Monitoring API
+      url: https://data.example.org/water/monitoring/api/
+      domain: data.example.org
+      snippet: Duplicate URL used to verify deduplication.
+  blockers: []
+  notes:
+    - Fixture data for harness tests only.
+  collected_at: "2026-06-07T00:00:00+00:00"
+
+- query_id: q-002
+  query_text: Example pollutant pressure query.
+  target_intent: dataset_discovery
+  research_track: pollutant_pressure_sources
+  chat_label: chat-pollutant-pressures
+  collection_status: ok
+  collection_method: fixture
+  request_endpoint: fixture://generic_discovery_sessions
+  answer_text: Fixture session for pollutant pressure sources.
+  visible_source_count: 2
+  links:
+    - title: Example Discharge Permits Portal
+      url: https://permits.example.gov/discharges
+      domain: permits.example.gov
+      snippet: Government portal for discharge permits, pollutant names, facility identifiers, compliance status, and impairment records.
+    - title: Example TMDL Report
+      url: https://reports.example.gov/water/example-tmdl.pdf
+      domain: reports.example.gov
+      snippet: PDF report describing impaired reaches, pollutants of concern, and watershed loading indicators.
+  blockers: []
+  notes:
+    - Fixture data for harness tests only.
+  collected_at: "2026-06-07T00:00:00+00:00"
+
+- query_id: q-003
+  query_text: Example academic context query.
+  target_intent: academic_knowledge
+  research_track: academic_context
+  chat_label: chat-academic-context
+  collection_status: zero_result
+  collection_method: fixture
+  request_endpoint: fixture://generic_discovery_sessions
+  answer_text: Fixture zero-result session.
+  visible_source_count: 0
+  links: []
+  blockers:
+    - No academic fixture source provided.
+  notes:
+    - Zero-result session should become a known gap, not a fabricated source.
+  collected_at: "2026-06-07T00:00:00+00:00"
+

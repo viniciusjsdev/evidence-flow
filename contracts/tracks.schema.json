@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/evidence-flow/tracks.schema.json",
+  "title": "ResearchTracks",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": [
+      "research_track",
+      "chat_label",
+      "priority",
+      "target_intent",
+      "domain_layer",
+      "hierarchy_level",
+      "thematic_axis",
+      "research_question",
+      "task_prompt",
+      "source_hints",
+      "expected_formats",
+      "target_parameters",
+      "coverage_target"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "research_track": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$"
+      },
+      "chat_label": {
+        "type": "string",
+        "minLength": 1
+      },
+      "priority": {
+        "type": "string",
+        "enum": ["high", "medium", "low"]
+      },
+      "target_intent": {
+        "type": "string",
+        "enum": ["dataset_discovery", "contextual_intelligence", "academic_knowledge"]
+      },
+      "domain_layer": {
+        "type": "string",
+        "minLength": 1
+      },
+      "hierarchy_level": {
+        "type": "string",
+        "enum": ["macro", "meso", "bridge", "micro", "custom"]
+      },
+      "thematic_axis": {
+        "type": "string",
+        "minLength": 1
+      },
+      "research_question": {
+        "type": "string",
+        "minLength": 1
+      },
+      "task_prompt": {
+        "type": "string",
+        "minLength": 1
+      },
+      "source_hints": {
+        "type": "array",
+        "items": { "type": "string" },
+        "default": []
+      },
+      "expected_formats": {
+        "type": "array",
+        "items": { "type": "string" },
+        "default": []
+      },
+      "target_parameters": {
+        "type": "array",
+        "items": { "type": "string" },
+        "default": []
+      },
+      "coverage_target": {
+        "type": "object",
+        "required": ["years", "required"],
+        "additionalProperties": false,
+        "properties": {
+          "years": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "required": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,2 @@
+"""Search adapter implementations."""
+

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/evidence-flow/discovery_sessions.schema.json",
+  "title": "DiscoverySessions",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "query_id",
+      "query_text",
+      "target_intent",
+      "research_track",
+      "chat_label",
+      "collection_status",
+      "collection_method",
+      "request_endpoint",
+      "answer_text",
+      "visible_source_count",
+      "links",
+      "blockers",
+      "notes",
+      "collected_at"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "query_id": { "type": "string", "minLength": 1 },
+      "query_text": { "type": "string", "minLength": 1 },
+      "target_intent": { "type": "string", "minLength": 1 },
+      "research_track": { "type": "string", "minLength": 1 },
+      "chat_label": { "type": "string", "minLength": 1 },
+      "collection_status": {
+        "type": "string",
+        "enum": ["ok", "zero_result", "blocked", "error"]
+      },
+      "collection_method": { "type": "string", "minLength": 1 },
+      "request_endpoint": { "type": "string" },
+      "answer_text": { "type": "string" },
+      "visible_source_count": { "type": "integer", "minimum": 0 },
+      "links": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["title", "url", "domain", "snippet"],
+          "additionalProperties": false,
+          "properties": {
+            "title": { "type": "string" },
+            "url": { "type": "string" },
+            "domain": { "type": "string" },
+            "snippet": { "type": "string" }
+          }
+        }
+      },
+      "blockers": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "notes": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "collected_at": {
+        "type": "string",
+        "format": "date-time"
+      }
+    }
+  }
+}
+

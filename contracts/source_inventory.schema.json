@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/evidence-flow/source_inventory.schema.json",
+  "title": "SourceInventory",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "url",
+      "title",
+      "snippet",
+      "source_domain",
+      "track_origin",
+      "track_priority",
+      "track_intent",
+      "domain_layer",
+      "hierarchy_level",
+      "thematic_axis",
+      "source_category",
+      "dataset_name",
+      "dataset_description",
+      "data_format",
+      "temporal_coverage",
+      "spatial_coverage",
+      "key_parameters",
+      "rank",
+      "access_type",
+      "access_notes",
+      "needs_review",
+      "review_status",
+      "filter_notes",
+      "enrichment_method"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "url": { "type": "string", "minLength": 1 },
+      "title": { "type": "string" },
+      "snippet": { "type": "string" },
+      "source_domain": { "type": "string" },
+      "track_origin": { "type": "string" },
+      "track_priority": { "type": "string", "enum": ["high", "medium", "low"] },
+      "track_intent": { "type": "string" },
+      "domain_layer": { "type": "string" },
+      "hierarchy_level": { "type": "string" },
+      "thematic_axis": { "type": "string" },
+      "source_category": { "type": "string" },
+      "dataset_name": { "type": "string" },
+      "dataset_description": { "type": "string" },
+      "data_format": { "type": "string" },
+      "temporal_coverage": { "type": ["string", "null"] },
+      "spatial_coverage": { "type": ["string", "null"] },
+      "key_parameters": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "rank": { "type": "integer", "minimum": 0 },
+      "access_type": { "type": "string" },
+      "access_notes": { "type": "string" },
+      "needs_review": { "type": "boolean" },
+      "review_status": {
+        "type": "string",
+        "enum": ["ready", "needs_review", "blocked"]
+      },
+      "filter_notes": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "source_hints": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "expected_formats": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "target_parameters": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "coverage_target": {
+        "type": "object",
+        "required": ["years", "required"],
+        "additionalProperties": false,
+        "properties": {
+          "years": { "type": "integer", "minimum": 0 },
+          "required": { "type": "boolean" }
+        }
+      },
+      "enrichment_method": { "type": "string" }
+    }
+  }
+}

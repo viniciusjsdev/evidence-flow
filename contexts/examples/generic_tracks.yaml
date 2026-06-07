@@ -1,0 +1,95 @@
+- research_track: official_monitoring_sources
+  chat_label: chat-official-monitoring
+  priority: high
+  target_intent: dataset_discovery
+  domain_layer: river_core
+  hierarchy_level: macro
+  thematic_axis: hydrology and monitoring
+  research_question: >
+    Which official monitoring portals expose long-term flow, stage, or
+    water-quality records for the target river corridor?
+  task_prompt: >
+    Search for official monitoring portals, APIs, station pages, and data
+    downloads tied to the target river corridor. Prefer sources that expose
+    parameter codes, station identifiers, temporal coverage, and machine-readable
+    formats.
+  source_hints:
+    - official water data portals
+    - national or state environmental agencies
+  expected_formats:
+    - csv
+    - json
+    - api
+    - web_portal
+  target_parameters:
+    - discharge
+    - stage
+    - dissolved oxygen
+    - pH
+    - turbidity
+    - nutrients
+  coverage_target:
+    years: 20
+    required: true
+
+- research_track: pollutant_pressure_sources
+  chat_label: chat-pollutant-pressures
+  priority: high
+  target_intent: dataset_discovery
+  domain_layer: pressure_core
+  hierarchy_level: meso
+  thematic_axis: pollutant pressures
+  research_question: >
+    Which sources describe pollutant dischargers, impairments, permits, or
+    pressure indicators affecting the target corridor?
+  task_prompt: >
+    Search for official datasets on pollutant sources, impaired waters, permits,
+    compliance records, TMDLs, wastewater facilities, and watershed pressure
+    indicators.
+  source_hints:
+    - environmental compliance portals
+    - impaired water datasets
+    - discharge permit registries
+  expected_formats:
+    - csv
+    - json
+    - api
+    - pdf_report
+  target_parameters:
+    - pollutant_name
+    - facility_or_program
+    - impairment_status
+    - permit_id
+  coverage_target:
+    years: 20
+    required: false
+
+- research_track: academic_context
+  chat_label: chat-academic-context
+  priority: medium
+  target_intent: academic_knowledge
+  domain_layer: literature_context
+  hierarchy_level: bridge
+  thematic_axis: scientific context
+  research_question: >
+    Which academic studies identify methods, comparable systems, or datasets
+    useful for interpreting the target river corridor?
+  task_prompt: >
+    Search academic literature for studies that cite datasets, monitoring
+    methods, comparable systems, or known limitations relevant to the research
+    question.
+  source_hints:
+    - OpenAlex
+    - Crossref
+    - institutional repositories
+  expected_formats:
+    - academic_paper
+    - pdf_report
+  target_parameters:
+    - method
+    - dataset
+    - limitation
+  coverage_target:
+    years: 0
+    required: false
+

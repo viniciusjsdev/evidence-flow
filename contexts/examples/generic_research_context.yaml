@@ -1,0 +1,41 @@
+domain_id: example-water-quality
+domain_name: Example Water Quality Research Context
+objective: >
+  Identify official and scientific evidence sources that can support a
+  reproducible water-quality assessment for a defined river corridor.
+primary_question: >
+  Which data sources can explain long-term water-quality conditions, pressures,
+  and monitoring gaps in the target river corridor?
+geographic_scope:
+  - Example river corridor
+  - Upstream watershed and downstream monitoring points
+temporal_scope:
+  target_start: "2006-01-01"
+  target_end: "2026-12-31"
+  target_years: 20
+thematic_axes:
+  - hydrology and monitoring
+  - water quality parameters
+  - pollutant pressures
+  - land use and watershed context
+preferred_sources:
+  - official monitoring portals
+  - environmental agency datasets
+  - academic repositories
+  - institutional technical reports
+exclusions:
+  - tourism pages
+  - generic summaries without source links
+  - sources without downloadable, queryable, or citable evidence
+expected_outputs:
+  - ranked source inventory
+  - collection handoff targets
+  - temporal coverage gaps
+  - report context for later narrative
+success_criteria:
+  - each priority track has at least one source or an explicit zero-result note
+  - source records preserve URL, method, and review status
+  - temporal coverage is compared against the 20-year target
+notes:
+  - This example is intentionally domain-light and should be replaced by a real context.
+

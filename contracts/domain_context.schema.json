@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/evidence-flow/domain_context.schema.json",
+  "title": "DomainContext",
+  "type": "object",
+  "required": [
+    "domain_id",
+    "domain_name",
+    "objective",
+    "primary_question",
+    "temporal_scope",
+    "thematic_axes",
+    "preferred_sources",
+    "expected_outputs",
+    "success_criteria"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "domain_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$"
+    },
+    "domain_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1
+    },
+    "primary_question": {
+      "type": "string",
+      "minLength": 1
+    },
+    "geographic_scope": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "temporal_scope": {
+      "type": "object",
+      "required": ["target_start", "target_end", "target_years"],
+      "additionalProperties": false,
+      "properties": {
+        "target_start": {
+          "type": "string"
+        },
+        "target_end": {
+          "type": "string"
+        },
+        "target_years": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "thematic_axes": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "preferred_sources": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "exclusions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "expected_outputs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "success_criteria": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    }
+  }
+}
+
